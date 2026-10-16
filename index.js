@@ -2,7 +2,10 @@
 import { FastMCP } from "@prefecthq/fastmcp-ts/server";
 import { z } from "zod";
 import { getTemperature } from "./utils/weather.js";
-
+//npx fastmcp inspect --file index.js
+// npm ci
+// npx fastmcp inspect --file index.js
+//The inspection command checks the server's tools and metadata. Resolve any errors it reports before deploying.
 const server = new FastMCP({
     name: "anas-mcp",
     version: "1.0.0",
@@ -30,5 +33,6 @@ server.tool(
 );
 
 await server.run({
-    transport: "stdio",
+    transport:"sse",
+    port:8000
 });
